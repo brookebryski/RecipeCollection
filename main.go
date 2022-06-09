@@ -17,6 +17,11 @@ func main() {
 	router := httprouter.New()
 
 	router.GET("/recipes", recipeHandler.GetRecipes)
+	router.GET("/recipe/:id", recipeHandler.GetRecipe)
+
+	router.POST("/addrecipe", recipeHandler.CreateRecipe)
+
+	router.DELETE("/delete/recipe/:id", recipeHandler.DeleteRecipe)
 
 	log.Println("http server runs on :8080")
 	err := http.ListenAndServe(":8080", router)
